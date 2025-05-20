@@ -27,7 +27,6 @@ class UserProfile extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
           ),
             ],),
-          
           Text(
             "Seorang pelajar yang sedang belajar Flutter",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
