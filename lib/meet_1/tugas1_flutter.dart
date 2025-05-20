@@ -17,7 +17,7 @@ class UserProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Nama: Andi Rahmat",
+            "Nama: Aisyah Maharani",
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
           ),
           Row(children: [
