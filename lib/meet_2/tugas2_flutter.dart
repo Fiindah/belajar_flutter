@@ -8,7 +8,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: Text("Profil Lengkap", style: TextStyle(color: Colors.white),),
+        title: Text("Profil Lengkap", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         actions: [
           IconButton(
@@ -19,18 +19,20 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-     body: Column(
+      body: Column(
         children: [
           Expanded(
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   CircleAvatar(
+                  CircleAvatar(
                     radius: 60.0,
-                    backgroundImage: AssetImage('assets/images/foto.jpg')),
-                 SizedBox(height: 20.0),
-                 Text('Aisyah Maharani', // Ganti dengan nama lengkap Anda
+                    backgroundImage: AssetImage('assets/images/foto.jpg'),
+                  ),
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Aisyah Maharani',
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
@@ -97,7 +99,7 @@ class ProfilePage extends StatelessWidget {
                         SizedBox(width: 10.0),
                         Expanded(
                           child: Container(
-                            padding:EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             color: Colors.green[100],
                             child: Center(
                               child: Text(
@@ -110,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                   SizedBox(height: 30.0),
+                  SizedBox(height: 30.0),
                   Padding(
                     padding: EdgeInsets.all(20.0),
                     child: Text(
@@ -123,10 +125,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: 50.0,
-            color: Colors.amber[300],
-          ),
+          Container(height: 50.0, color: Colors.amber[300]),
         ],
       ),
     );
