@@ -119,9 +119,13 @@ class _TugasLimaState extends State<TugasLima> {
                     onLongPress: () {
                       print('Tahan lama');
                     },
-                    child: Text(
-                      'Tekan Aku',
-                      style: TextStyle(fontSize: 24, color: Colors.blue),
+                    child: Container(
+                      padding: EdgeInsets.all(16),
+                      color: Color(0xff4D55CC),
+                      child: Text(
+                        'Tekan Aku',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),

@@ -1,4 +1,4 @@
-import 'package:belajar_flutter/meet_5/tugas5_flutter.dart';
+import 'package:belajar_flutter/meet_6/tugas6_flutter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xff00224F)),
       ),
-      home: TugasLima(),
+      home: TugasEnam(),
     );
   }
 }
