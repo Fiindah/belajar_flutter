@@ -159,7 +159,14 @@ class _TugasEnamState extends State<TugasEnam> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 48),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 32),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Column(
+                    children: [
                       Row(
                         children: [
                           Expanded(child: Divider(color: Colors.white12)),
@@ -242,7 +249,7 @@ class _TugasEnamState extends State<TugasEnam> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -251,7 +258,7 @@ class _TugasEnamState extends State<TugasEnam> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              color: Colors.white,
+                              color: Color(0xff999999),
                             ),
                           ),
                           TextButton(
