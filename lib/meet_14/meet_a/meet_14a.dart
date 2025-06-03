@@ -1,7 +1,7 @@
-import 'package:belajar_flutter/meet_14/list_in_map_widget.dart';
-import 'package:belajar_flutter/meet_14/list_widget.dart';
-import 'package:belajar_flutter/meet_14/map_widget.dart';
-import 'package:belajar_flutter/meet_14/model_widget.dart';
+import 'package:belajar_flutter/meet_14/meet_a/list_in_map_widget.dart';
+import 'package:belajar_flutter/meet_14/meet_a/list_widget.dart';
+import 'package:belajar_flutter/meet_14/meet_a/map_widget.dart';
+import 'package:belajar_flutter/meet_14/meet_a/model_widget.dart';
 import 'package:flutter/material.dart';
 
 class Meet14a extends StatelessWidget {
