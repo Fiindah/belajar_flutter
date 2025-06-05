@@ -1,11 +1,10 @@
 import 'package:belajar_flutter/constant/app_color.dart';
 import 'package:belajar_flutter/constant/app_style.dart';
+import 'package:belajar_flutter/meet_1/meet.dart';
+import 'package:belajar_flutter/meet_12/meet_12a.dart';
+import 'package:belajar_flutter/meet_12/meet_12c.dart';
+import 'package:belajar_flutter/meet_4/meet_4a.dart';
 import 'package:flutter/material.dart';
-// import 'package:ppkd_b_2/constant/app_color.dart';
-// import 'package:ppkd_b_2/constant/app_style.dart';
-// import 'package:ppkd_b_2/meet_12/meet_12a.dart';
-// import 'package:ppkd_b_2/meet_12/meet_12c.dart';
-// import 'package:ppkd_b_2/meet_4/meet_4a.dart';
 
 class MeetDuaBelasB extends StatefulWidget {
   const MeetDuaBelasB({super.key});
@@ -18,11 +17,11 @@ class MeetDuaBelasB extends StatefulWidget {
 class _MeetDuaBelasBState extends State<MeetDuaBelasB> {
   int _selectedIndex = 0;
   static const List<Widget> _screen = [
-    // Center(child: Text("Home Screen")),
-    // MeetDuaBelasC(),
-    // Meet12AInputWidget(),
-    // MeetSatu(),
-    // MeetEmpatA(),
+    Center(child: Text("Home Screen")),
+    MeetDuaBelasC(),
+    Meet12AInputWidget(),
+    MeetSatu(),
+    MeetEmpatA(),
   ];
 
   @override

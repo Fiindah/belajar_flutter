@@ -1,4 +1,12 @@
-import 'package:belajar_flutter/tugas10/tugas10_flutter.dart';
+// import 'package:belajar_flutter/meet_11/login_screen.dart';
+// import 'package:belajar_flutter/meet_12/meet_12a.dart';
+// import 'package:belajar_flutter/meet_12/meet_12b.dart';
+// import 'package:belajar_flutter/meet_16/login_screen.dart';
+// import 'package:belajar_flutter/meet_16/register_screen.dart';
+// import 'package:belajar_flutter/meet_2/meet_2.dart';
+// import 'package:belajar_flutter/meet_3/meet_3_a.dart';
+// import 'package:belajar_flutter/splash_screen.dart';
+import 'package:belajar_flutter/tugas11/jadwal_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +22,15 @@ class MyApp extends StatelessWidget {
       // initialRoute: "/",
       // routes: {
       //   //Harus didaftarkan dulu disini
-      //   "/": (context) => LoginScreen(),
-      //   "/praktik_navigator": (context) => PraktikSebelas(),
+      //   "/": (context) => SplashScreen(),
+      //   "/login": (context) => LoginScreen(),
+      //   "/meet_2": (context) => MeetDua(),
+      //   // SiswaApp.id: (context) -> SiswaApp(),
+      //   LoginScreenApp.id: (context) => LoginScreenApp(),
+      //   RegisterScreenApp.id: (context) => RegisterScreenApp(),
       //   MeetTigaA.id: (context) => MeetTigaA(),
       //   Meet12AInputWidget.id: (context) => Meet12AInputWidget(),
+      //   MeetDuaBelasB.id: (context) => MeetDuaBelasB(),
       // },
       debugShowCheckedModeBanner: false,
       title: 'PPKD B 2',
@@ -30,7 +43,7 @@ class MyApp extends StatelessWidget {
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),
       ),
-      home: Tugas10(),
+      home: JadwalApp(),
     );
   }
 }

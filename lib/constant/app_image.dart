@@ -11,4 +11,5 @@ class AppImage {
   static const String pisau = "$asset/pisau.jpg";
   static const String talenan = "$asset/talenan.jpg";
   static const String serbet = "$asset/serbet.jpg";
+  static const String foto = "$asset/foto.jpg";
 }

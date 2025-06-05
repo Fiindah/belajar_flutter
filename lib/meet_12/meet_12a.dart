@@ -4,10 +4,6 @@ import 'package:belajar_flutter/constant/app_style.dart';
 import 'package:belajar_flutter/meet_12/checkbox_costum.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-// import 'package:ppkd_b_2/constant/app_color.dart';
-// import 'package:ppkd_b_2/constant/app_format.dart';
-// import 'package:ppkd_b_2/constant/app_style.dart';
-// import 'package:ppkd_b_2/meet_12/checkbox_custom.dart';
 
 class Meet12AInputWidget extends StatefulWidget {
   const Meet12AInputWidget({super.key});
