@@ -1,4 +1,5 @@
 import 'package:belajar_flutter/study_case/database/db_helper.dart';
+import 'package:belajar_flutter/study_case/edit_siswa_screen.dart';
 import 'package:belajar_flutter/study_case/model/siswa_model.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,6 @@ class _SiswaAppState extends State<SiswaApp> {
       muatData();
     }
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +70,78 @@ class _SiswaAppState extends State<SiswaApp> {
                     leading: CircleAvatar(child: Text('${siswa.id}')),
                     title: Text('Nama: ${siswa.nama}'),
                     subtitle: Text('Umur: ${siswa.umur}'),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () async {
+                            // Tunggu hasil dari EditSiswaScreen
+                            final hasil = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => EditSiswaScreen(siswa: siswa),
+                              ),
+                            );
+
+                            // Kalau hasil == true, berarti data berhasil diupdate
+                            if (hasil == true) {
+                              await muatData(); // Muat ulang data dari database
+                              setState(() {}); // Untuk perbarui tampilan UI
+                            }
+                          },
+                        ),
+
+                        // IconButton(
+                        //   icon: Icon(Icons.edit),
+                        //   onPressed: () async {
+                        //     await Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (_) => EditSiswaScreen(siswa: siswa),
+                        //       ),
+                        //     );
+                        //   },
+                        // ),
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () async {
+                            final konfirmasi = await showDialog<bool>(
+                              context: context,
+                              builder:
+                                  (_) => AlertDialog(
+                                    title: Text('Hapus Siswa'),
+                                    content: Text(
+                                      'Yakin ingin menghapus ${siswa.nama}?',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed:
+                                            () => Navigator.pop(context, false),
+                                        child: Text('Batal'),
+                                      ),
+                                      TextButton(
+                                        onPressed:
+                                            () => Navigator.pop(context, true),
+                                        child: Text('Hapus'),
+                                      ),
+                                    ],
+                                  ),
+                            );
+                            if (konfirmasi == true) {
+                              await DBHelper.deleteSiswa(siswa.id!);
+                              await muatData();
+                            }
+                          },
+
+                          // onPressed: () async {
+                          //   await DBHelperSiswa.deleteSiswa(siswa.id!);
+                          //   await muatData(); // ini sudah memanggil setState
+                          //   // setState(() {});
+                          // },
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
