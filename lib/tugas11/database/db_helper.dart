@@ -35,4 +35,23 @@ class DBHelperDaftar {
 
     return List.generate(maps.length, (i) => ModelJadwal.fromMap(maps[i]));
   }
+
+  // fungsi update
+  static Future<void> updateJadwal(ModelJadwal jadwal) async {
+    final db = await DBHelperDaftar.db();
+
+    await db.update(
+      'jadwal',
+      jadwal.toMap(),
+      where: 'id = ?',
+      whereArgs: [jadwal.id],
+    );
+  }
+
+  // fungsi delete
+  static Future<void> deleteJadwal(int id) async {
+    final db = await DBHelperDaftar.db();
+
+    await db.delete('jadwal', where: 'id = ?', whereArgs: [id]);
+  }
 }

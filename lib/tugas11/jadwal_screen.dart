@@ -1,4 +1,5 @@
 import 'package:belajar_flutter/tugas11/database/db_helper.dart';
+import 'package:belajar_flutter/tugas11/edit_jadwal_screen.dart';
 import 'package:belajar_flutter/tugas11/model/model_jadwal.dart';
 import 'package:flutter/material.dart';
 
@@ -136,6 +137,35 @@ class _JadwalAppState extends State<JadwalApp> {
                         ],
                       ),
                       subtitle: Text('${jadwal.tanggal} | ${jadwal.jam}'),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit),
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder:
+                                      (_) => EditJadwalScreen(
+                                        jadwal: jadwal,
+                                        onUpdate: () {
+                                          memuatData();
+                                        },
+                                      ),
+                                ),
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () async {
+                              await DBHelperDaftar.deleteJadwal(jadwal.id!);
+                              await memuatData();
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),
