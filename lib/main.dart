@@ -6,7 +6,8 @@
 // import 'package:belajar_flutter/meet_2/meet_2.dart';
 // import 'package:belajar_flutter/meet_3/meet_3_a.dart';
 // import 'package:belajar_flutter/splash_screen.dart';
-import 'package:belajar_flutter/tugas11/jadwal_screen.dart';
+//import 'package:belajar_flutter/tugas11/jadwal_screen.dart';
+import 'package:belajar_flutter/tugas14/view/post_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),
       ),
-      home: JadwalApp(),
+      home: PostScreen(),
     );
   }
 }
