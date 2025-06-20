@@ -1,19 +1,14 @@
 import 'package:belajar_flutter/constant/app_color.dart';
-import 'package:belajar_flutter/helper/preference.dart';
-import 'package:belajar_flutter/meet_11/meet_11.dart';
-import 'package:belajar_flutter/meet_12/meet_12b.dart';
-import 'package:belajar_flutter/meet_4/meet_4a.dart';
-import 'package:belajar_flutter/meet_5/meet_5.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginPageState extends State<LoginPage> {
   bool isVisibility = false;
   @override
   Widget build(BuildContext context) {
@@ -30,22 +25,22 @@ class _LoginScreenState extends State<LoginScreen> {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Welcome Back",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                "Logo Brand",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.myblue1,
+                ),
               ),
               height(12),
               Text(
-                "Login to access your account",
-                style: TextStyle(fontSize: 14, color: AppColor.gray88),
+                "Login to your account",
+                style: TextStyle(fontSize: 16, color: AppColor.black22),
               ),
               height(24),
-              buildTitle("Email Address"),
+              buildTitle("Email"),
               height(12),
               buildTextField(hintText: "Enter your email"),
-              height(16),
-              buildTitle("Phone Number"),
-              height(12),
-              buildTextField(hintText: "Enter your phone number"),
               height(16),
               buildTitle("Password"),
               height(12),
@@ -55,10 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MeetSebelas()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => MeetSebelas()),
+                    // );
                   },
                   child: Text(
                     "Forgot Password?",
@@ -76,13 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    //Navigate to MeetLima screen menggunakan Push
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MeetLima()),
-                    );
-                    PreferenceHandler.saveLogin(true);
-                    Navigator.pushNamed(context, MeetDuaBelasB.id);
+                    // Navigate to MeetLima screen menggunakan Push
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const MeetLima()),
+                    // );
+                    // PreferenceHandler.saveLogin(true);
+                    // Navigator.pushNamed(context, MeetDuaBelasB.id);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,
@@ -161,10 +156,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => MeetEmpatA()),
-                      );
+                      // Navigator.pushReplacement(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => MeetEmpatA()),
+                      // );
                     },
                     child: Text(
                       "Sign Up",
@@ -190,10 +185,11 @@ class _LoginScreenState extends State<LoginScreen> {
       height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
-          fit: BoxFit.cover,
-        ),
+        color: AppColor.neutral,
+        // image: DecorationImage(
+        //   image: AssetImage("assets/images/background.png"),
+        //   fit: BoxFit.cover,
+        // ),
       ),
     );
   }
@@ -204,20 +200,20 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: AppColor.myblue1.withOpacity(0.2),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
-          borderSide: BorderSide(color: Colors.black, width: 1.0),
+          borderRadius: BorderRadius.circular(6),
+          borderSide: BorderSide(color: AppColor.myblue1, width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
-            color: Colors.black.withOpacity(0.2),
+            color: AppColor.myblue1.withOpacity(0.2),
             width: 1.0,
           ),
         ),
@@ -231,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                   icon: Icon(
                     isVisibility ? Icons.visibility_off : Icons.visibility,
-                    color: AppColor.gray88,
+                    color: AppColor.myblue1,
                   ),
                 )
                 : null,
@@ -245,7 +241,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildTitle(String text) {
     return Row(
       children: [
-        Text(text, style: TextStyle(fontSize: 12, color: AppColor.gray88)),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 16,
+            color: AppColor.myblue1,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }

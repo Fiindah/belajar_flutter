@@ -34,8 +34,7 @@ class _PostScreenState extends State<PostScreen> {
       print('Error fetching posts: $error');
       setState(() {
         isLoading = false;
-        errorMessage =
-            'Failed to load posts. Please try again later.'; // Set error message
+        errorMessage = 'Failed to load posts. Please try again later.';
       });
     }
   }

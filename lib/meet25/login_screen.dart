@@ -1,23 +1,66 @@
 import 'package:belajar_flutter/constant/app_color.dart';
-import 'package:belajar_flutter/helper/preference.dart';
+import 'package:belajar_flutter/meet25/api/user_api.dart';
+import 'package:belajar_flutter/meet25/home_screen.dart';
+import 'package:belajar_flutter/meet25/register_screen.dart';
 import 'package:belajar_flutter/meet_11/meet_11.dart';
-import 'package:belajar_flutter/meet_12/meet_12b.dart';
-import 'package:belajar_flutter/meet_4/meet_4a.dart';
-import 'package:belajar_flutter/meet_5/meet_5.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
+class LoginScreenApi extends StatefulWidget {
+  const LoginScreenApi({super.key});
+  static const String id = "/login_screen_api";
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenApi> createState() => _LoginScreenApiState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenApiState extends State<LoginScreenApi> {
+  final UserService userService = UserService();
   bool isVisibility = false;
+  bool isLoading = false;
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  void login() async {
+    setState(() {
+      isLoading = true;
+    });
+    final res = await userService.loginUser(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    if (res["data"] != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Login successful!"),
+          backgroundColor: Colors.green,
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    } else if (res["errors"] != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("${res["message"]}"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Stack(children: [buildBackground(), buildLayer()]));
+    return Scaffold(
+      body: Form(
+        key: _formKey,
+        child: Stack(children: [buildBackground(), buildLayer()]),
+      ),
+    );
   }
 
   SafeArea buildLayer() {
@@ -30,26 +73,33 @@ class _LoginScreenState extends State<LoginScreen> {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Welcome Back",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                "Logo Brand",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.myblue1,
+                ),
               ),
               height(12),
               Text(
-                "Login to access your account",
-                style: TextStyle(fontSize: 14, color: AppColor.gray88),
+                "Login to your account",
+                style: TextStyle(fontSize: 16, color: AppColor.black22),
               ),
               height(24),
-              buildTitle("Email Address"),
+              buildTitle("Email"),
               height(12),
-              buildTextField(hintText: "Enter your email"),
-              height(16),
-              buildTitle("Phone Number"),
-              height(12),
-              buildTextField(hintText: "Enter your phone number"),
+              buildTextField(
+                hintText: "Enter your email",
+                controller: emailController,
+              ),
               height(16),
               buildTitle("Password"),
               height(12),
-              buildTextField(hintText: "Enter your password", isPassword: true),
+              buildTextField(
+                hintText: "Enter your password",
+                isPassword: true,
+                controller: passwordController,
+              ),
               height(12),
               Align(
                 alignment: Alignment.centerRight,
@@ -76,13 +126,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    //Navigate to MeetLima screen menggunakan Push
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MeetLima()),
-                    );
-                    PreferenceHandler.saveLogin(true);
-                    Navigator.pushNamed(context, MeetDuaBelasB.id);
+                    if (_formKey.currentState!.validate()) {
+                      print("Email: ${emailController.text}");
+                      print("Password: ${passwordController.text}");
+                      login();
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.blueButton,
@@ -90,14 +138,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child:
+                      isLoading
+                          ? CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                 ),
               ),
               height(16),
@@ -161,10 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => MeetEmpatA()),
-                      );
+                      Navigator.pushNamed(context, RegisterScreenAPI.id);
                     },
                     child: Text(
                       "Sign Up",
@@ -190,32 +238,44 @@ class _LoginScreenState extends State<LoginScreen> {
       height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
-          fit: BoxFit.cover,
-        ),
+        color: AppColor.neutral,
+        // image: DecorationImage(
+        //   image: AssetImage("assets/images/background.png"),
+        //   fit: BoxFit.cover,
+        // ),
       ),
     );
   }
 
-  TextField buildTextField({String? hintText, bool isPassword = false}) {
-    return TextField(
+  Widget buildTextField({
+    String? hintText,
+    bool isPassword = false,
+    required TextEditingController controller,
+  }) {
+    return TextFormField(
+      controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
       obscureText: isPassword ? isVisibility : false,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
             color: Colors.black.withOpacity(0.2),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(color: Colors.black, width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
             color: Colors.black.withOpacity(0.2),
             width: 1.0,
@@ -245,7 +305,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildTitle(String text) {
     return Row(
       children: [
-        Text(text, style: TextStyle(fontSize: 12, color: AppColor.gray88)),
+        Text(text, style: TextStyle(fontSize: 16, color: AppColor.myblue1)),
       ],
     );
   }

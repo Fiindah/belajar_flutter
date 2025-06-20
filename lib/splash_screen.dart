@@ -1,7 +1,7 @@
 import 'package:belajar_flutter/constant/app_image.dart';
 import 'package:belajar_flutter/constant/app_style.dart';
 import 'package:belajar_flutter/helper/preference.dart';
-import 'package:belajar_flutter/meet_16/login_screen.dart';
+import 'package:belajar_flutter/meet25/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -25,11 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
       // } else {
       Navigator.pushNamedAndRemoveUntil(
         context,
+
         // SiswaApp.id,
-        LoginScreenApp.id,
+        LoginScreenApi.id,
         (route) => false,
       );
-      // };
+      // }
     });
   }
 
@@ -50,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
             Image.asset(AppImage.foto),
             SizedBox(height: 20),
-            Text("Pisang App", style: AppStyle.fontBold()),
+            Text("Flutter App", style: AppStyle.fontBold()),
             Spacer(),
             SafeArea(
               child: Text("v 1.0.0", style: AppStyle.fontRegular(fontSize: 10)),
