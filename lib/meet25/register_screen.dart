@@ -1,6 +1,5 @@
 import 'package:belajar_flutter/constant/app_color.dart';
 import 'package:belajar_flutter/meet25/api/user_api.dart';
-import 'package:belajar_flutter/meet_11/meet_11.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreenAPI extends StatefulWidget {
@@ -73,16 +72,20 @@ class _RegisterScreenAPIState extends State<RegisterScreenAPI> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Register",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  "Logo Brand",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.myblue1,
+                  ),
                 ),
                 height(12),
                 Text(
-                  "Register your account",
-                  style: TextStyle(fontSize: 14, color: AppColor.gray88),
+                  "Register to your account",
+                  style: TextStyle(fontSize: 16, color: AppColor.black22),
                 ),
                 height(24),
-                buildTitle("Email Address"),
+                buildTitle("Email"),
                 height(12),
                 buildTextField(
                   hintText: "Enter your email",
@@ -108,10 +111,10 @@ class _RegisterScreenAPIState extends State<RegisterScreenAPI> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MeetSebelas()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => MeetSebelas()),
+                      // );
                     },
                     child: Text(
                       "Forgot Password?",
@@ -219,18 +222,18 @@ class _RegisterScreenAPIState extends State<RegisterScreenAPI> {
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
             color: Colors.black.withOpacity(0.2),
             width: 1.0,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(color: Colors.black, width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(6),
           borderSide: BorderSide(
             color: Colors.black.withOpacity(0.2),
             width: 1.0,
@@ -260,7 +263,7 @@ class _RegisterScreenAPIState extends State<RegisterScreenAPI> {
   Widget buildTitle(String text) {
     return Row(
       children: [
-        Text(text, style: TextStyle(fontSize: 12, color: AppColor.gray88)),
+        Text(text, style: TextStyle(fontSize: 16, color: AppColor.myblue1)),
       ],
     );
   }

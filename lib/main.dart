@@ -1,4 +1,6 @@
+import 'package:belajar_flutter/constant/app_color.dart';
 import 'package:belajar_flutter/meet25/login_screen.dart';
+import 'package:belajar_flutter/meet25/profile_screen.dart';
 import 'package:belajar_flutter/meet25/register_screen.dart';
 import 'package:belajar_flutter/meet_11/login_screen.dart';
 import 'package:belajar_flutter/meet_12/meet_12a.dart';
@@ -29,17 +31,19 @@ class MyApp extends StatelessWidget {
         RegisterScreenApp.id: (context) => RegisterScreenApp(),
         LoginScreenApi.id: (context) => LoginScreenApi(),
         RegisterScreenAPI.id: (context) => RegisterScreenAPI(),
+        ProfileUserScreen.id: (context) => ProfileUserScreen(),
         MeetTigaA.id: (context) => MeetTigaA(),
         Meet12AInputWidget.id: (context) => Meet12AInputWidget(),
         MeetDuaBelasB.id: (context) => MeetDuaBelasB(),
       },
       debugShowCheckedModeBanner: false,
-      title: 'PPKD B 2',
+      title: 'Belajar Flutter PPKD B 2',
 
       theme: ThemeData(
         // useMaterial3: true,
         fontFamily: 'Poppins',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        primaryColor: AppColor.myblue1,
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),

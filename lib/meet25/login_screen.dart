@@ -1,8 +1,8 @@
 import 'package:belajar_flutter/constant/app_color.dart';
+import 'package:belajar_flutter/helper/preference.dart';
 import 'package:belajar_flutter/meet25/api/user_api.dart';
-import 'package:belajar_flutter/meet25/home_screen.dart';
+import 'package:belajar_flutter/meet25/profile_screen.dart';
 import 'package:belajar_flutter/meet25/register_screen.dart';
-import 'package:belajar_flutter/meet_11/meet_11.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreenApi extends StatefulWidget {
@@ -30,15 +30,18 @@ class _LoginScreenApiState extends State<LoginScreenApi> {
       password: passwordController.text,
     );
     if (res["data"] != null) {
+      PreferenceHandler.saveToken(res["data"]["token"]);
+      print("Token: ${res["data"]["token"]}");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Login successful!"),
           backgroundColor: Colors.green,
         ),
       );
-      Navigator.push(
+      Navigator.pushNamedAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        ProfileUserScreen.id,
+        (route) => false,
       );
     } else if (res["errors"] != null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -105,10 +108,10 @@ class _LoginScreenApiState extends State<LoginScreenApi> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MeetSebelas()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => MeetSebelas()),
+                    // );
                   },
                   child: Text(
                     "Forgot Password?",

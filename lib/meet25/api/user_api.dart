@@ -1,6 +1,10 @@
+import 'dart:convert';
+
+import 'package:belajar_flutter/helper/preference.dart';
 import 'package:belajar_flutter/meet25/endpoint.dart';
 import 'package:belajar_flutter/meet25/model/login_error_response.dart';
 import 'package:belajar_flutter/meet25/model/login_response.dart';
+import 'package:belajar_flutter/meet25/model/profile_response.dart';
 import 'package:belajar_flutter/meet25/model/register_error_respone.dart';
 import 'package:belajar_flutter/meet25/model/register_response.dart';
 import 'package:http/http.dart' as http;
@@ -48,6 +52,42 @@ class UserService {
     } else {
       print("Failed to login user: ${response.statusCode}");
       throw Exception("Failed to login user: ${response.statusCode}");
+    }
+  }
+
+  Future<Map<String, dynamic>> getProfile() async {
+    String? token = await PreferenceHandler.getToken();
+    final response = await http.get(
+      Uri.parse(Endpoint.profile),
+      headers: {"Accept": "application/json", "Authorization": "Bearer $token"},
+    );
+    print(response.body);
+    print(response.body);
+    if (response.statusCode == 200) {
+      print(profileResponseFromJson(response.body).toJson());
+      return profileResponseFromJson(response.body).toJson();
+    } else if (response.statusCode == 422) {
+      return registerErrorResponseFromJson(response.body).toJson();
+    } else {
+      print("Failed to login user: ${response.statusCode}");
+      throw Exception("Failed to login user: ${response.statusCode}");
+    }
+  }
+
+  Future<bool> updatedProfile(String name) async {
+    final token = await PreferenceHandler.getToken();
+    final response = await http.put(
+      Uri.parse(Endpoint.profileUpdated),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $token",
+      },
+      body: jsonEncode({'name': name}),
+    );
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception(jsonDecode(response.body)['message']);
     }
   }
 }
