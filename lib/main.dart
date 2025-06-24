@@ -1,7 +1,6 @@
-import 'package:belajar_flutter/constant/app_color.dart';
-import 'package:belajar_flutter/meet25/login_screen.dart';
-import 'package:belajar_flutter/meet25/profile_screen.dart';
-import 'package:belajar_flutter/meet25/register_screen.dart';
+import 'package:belajar_flutter/meet25/tugas_15/login_screen.dart';
+import 'package:belajar_flutter/meet25/tugas_15/profile_screen.dart';
+import 'package:belajar_flutter/meet25/tugas_15/register_screen.dart';
 import 'package:belajar_flutter/meet_11/login_screen.dart';
 import 'package:belajar_flutter/meet_12/meet_12a.dart';
 import 'package:belajar_flutter/meet_12/meet_12b.dart';
@@ -42,8 +41,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // useMaterial3: true,
         fontFamily: 'Poppins',
-        primaryColor: AppColor.myblue1,
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.),
+        // primaryColor: AppColor.myblue1,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),
