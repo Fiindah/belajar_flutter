@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:belajar_flutter/helper/preference.dart';
-import 'package:belajar_flutter/meet25/tugas_15/endpoint.dart';
-import 'package:belajar_flutter/meet25/tugas_15/model/login_error_response.dart';
-import 'package:belajar_flutter/meet25/tugas_15/model/login_response.dart';
-import 'package:belajar_flutter/meet25/tugas_15/model/profile_response.dart';
-import 'package:belajar_flutter/meet25/tugas_15/model/register_error_respone.dart';
-import 'package:belajar_flutter/meet25/tugas_15/model/register_response.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/endpoint.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/model/login_error_response.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/model/login_response.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/model/profile_response.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/model/register_error_respone.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/model/register_response.dart';
 import 'package:http/http.dart' as http;
 
 class UserService {

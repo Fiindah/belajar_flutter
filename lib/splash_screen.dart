@@ -1,7 +1,7 @@
 import 'package:belajar_flutter/constant/app_image.dart';
 import 'package:belajar_flutter/constant/app_style.dart';
 import 'package:belajar_flutter/helper/preference.dart';
-import 'package:belajar_flutter/meet25/tugas_15/login_screen.dart';
+import 'package:belajar_flutter/meet_25/tugas_15/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
